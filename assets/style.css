@@ -1,0 +1,23 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+header {
+    background-color:white;
+}
+
+.row {
+    font-size:30px;
+    color:black;
+    width: 20%;
+    margin-right: 100px bold red;
+}
