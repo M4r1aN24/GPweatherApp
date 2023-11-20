@@ -9,7 +9,7 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
         return response.json();
       })
       .then(function (data) {
-        var todaysForecast = $("#today");
+        var todaysWeather = $("#today");
         console.log(data);
       // The city name
       // The date
@@ -18,27 +18,83 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
       // The humidity
       // The wind speed
       // Storing the rating data
-      var todaysDiv = $("<div class = todaysDiv>");
-      todaysForecast.append(todaysDiv);
+      var todaysDiv = $("<ul class = todaysList>");
+      
+      var icon = $("<img>").attr('src', 'https://openweathermap.org/img/wn/'  + data.weather[0].icon + '@2x.png');
 
       var cityName = data.name;
-      var pOne = $("<p>").text("Name: " + cityName + dayjs().format(" (DD/MM/YYYY)")) ;
-      todaysDiv.append(pOne);
-
-    
-
+      var liOne = $("<li>").text("Name: " + cityName + dayjs().format(" (DD/MM/YYYY)")) ;
+      
       var todaysTemperature = data.main.temp -272.15;
-      var pThree = $("<p>").text("Temperature: " + todaysTemperature.toFixed(2) + " Celcius");
-      todaysDiv.append(pThree);
-
+      var liTwo = $("<li>").text("Temp: " + todaysTemperature.toFixed(2) + " Celcius");
+      
       var todaysHumidity = data.main.humidity;
-      var pFour = $("<p>").text("Humidity: " + todaysHumidity);
-      todaysDiv.append(pFour);
-
+      var liThree = $("<li>").text("Humidity: " + todaysHumidity);
+      
       var todaysWind = data.wind.speed;
-      var pFive = $("<p>").text("Wind speed: " + todaysWind + " miles per hour");
-      todaysDiv.append(pFive);
+      var liFour = $("<li>").text("Wind: " + todaysWind);
 
+      todaysWeather.append(todaysDiv);
+      liOne.append(icon);
+      todaysDiv.append(liOne);
+      todaysDiv.append(liTwo);
+      todaysDiv.append(liThree);
+      todaysDiv.append(liFour);
        
       });
   });
+
+
+  $('#search-button').on('click', function displayForecast (event) {
+    event.preventDefault();
+    var forecast = $(".form-input").val();
+    
+      var queryURL =
+        'https://api.openweathermap.org/data/2.5/forecast?q=' + forecast + '&appid=e0304d8dfbbc9ab6fcf8b56eddb27564';
+      fetch(queryURL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          var forecast = $("#forecast");
+          console.log(data);
+          var forecastDisplay = $('<h2>');
+            forecastDisplay.text("5-Day Forecast: ");
+            forecast.append(forecastDisplay);
+
+          for(var i = 7; i <= data.list.length; i+=7){
+           var eachDaysWeather = fiveDaysBlock(data.list[i]);
+            forecast.append(eachDaysWeather);
+          }
+        });
+        
+    });
+ 
+    function fiveDaysBlock(forecastData){
+      console.log(forecastData.main.temp);
+
+      var forecastList = $("<ul class = 'listBlock'>");
+
+      var icon = $("<img id = weatherIcon>").attr('src', 'https://openweathermap.org/img/wn/'  + forecastData.weather[0].icon + '@2x.png');
+
+      var liOne = $("<li>").text(dayjs().format("")) ;
+
+      var forecastTemp = forecastData.main.temp - 272.15;
+      var liTwo = $("<li>").text("Temperature: " + forecastTemp.toFixed(2) + " Celcius");
+
+      var forecastHumidity = forecastData.main.humidity;
+      var liThree = $("<li>").text("Humidity: " + forecastHumidity);
+      
+      var forecastWind = forecastData.wind.speed;
+      var liFour = $("<li>").text("Wind speed: " + forecastWind + " miles per hour");
+      
+      liOne.append(icon);
+      forecastList.append(liOne);
+      forecastList.append(liTwo);
+      forecastList.append(liThree);
+      forecastList.append(liFour);
+
+      return forecastList;
+    }
+
+  
