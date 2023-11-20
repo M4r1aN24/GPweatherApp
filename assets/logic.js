@@ -12,7 +12,7 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
         var todaysWeather = $("#today");
 
       var todayDiv = $("<div class = 'todayBlock'>");
-      var todayList = $("<ul class = 'listBlock'>");
+      var todayList = $("<ul class = 'todayListBlock'>");
       
       var icon = $("<img>").attr('src', 'https://openweathermap.org/img/wn/'  + data.weather[0].icon + '@2x.png');
 
@@ -56,9 +56,11 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
             forecastDisplay.text("5-Day Forecast: ");
             forecast.append(forecastDisplay);
 
-          for(var i = 7; i <= data.list.length; i+=7){
+          for(var i = 0; i <= data.list.length; i++){
+            if(data.list[i].dt_txt.slice(11, 13) === "12"){
            var eachDaysWeather = fiveDaysBlock(data.list[i]);
             forecast.append(eachDaysWeather);
+            }
           }
         });
         
