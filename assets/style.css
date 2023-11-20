@@ -19,15 +19,28 @@ h2 {
 }
 
 .row {
+    display: flex;
     color:black;
-    margin-right: 100px bold red;
+}
+
+div {
+    display: flex;
+
+}
+
+aside {
+    display: block;
 }
 
 ul {
     list-style: none;
 }
 
-img {
-    size: 20px;
+.todayBlock {
+    width: 80%;
+  
 }
 
+.forecastDiv {
+    background-color: rgba(0, 0, 255, 0.596);
+}
