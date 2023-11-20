@@ -18,7 +18,7 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
       // The humidity
       // The wind speed
       // Storing the rating data
-      var todaysDiv = $("<ul class = todaysList>");
+      var todaysDiv = $("<ul class = 'listBlock'>");
       
       var icon = $("<img>").attr('src', 'https://openweathermap.org/img/wn/'  + data.weather[0].icon + '@2x.png');
 
@@ -75,9 +75,9 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
 
       var forecastList = $("<ul class = 'listBlock'>");
 
-      var icon = $("<img id = weatherIcon>").attr('src', 'https://openweathermap.org/img/wn/'  + forecastData.weather[0].icon + '@2x.png');
+      var icon = $("<img id = 'weatherIcon'>").attr('src', 'https://openweathermap.org/img/wn/'  + forecastData.weather[0].icon + '@2x.png');
 
-      var liOne = $("<li>").text(dayjs().format("")) ;
+      var liOne = $("<li>").text(dayjs().format()) ;
 
       var forecastTemp = forecastData.main.temp - 272.15;
       var liTwo = $("<li>").text("Temperature: " + forecastTemp.toFixed(2) + " Celcius");

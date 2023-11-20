@@ -6,9 +6,11 @@ body{
 h1 {
     font-size: 50px;
     display: flex;
+    margin: 0;
     justify-content: center;
     align-items: center;
     color: white;
+    height: 100px;
     background-color: rgb(21, 21, 128);
 }
 
@@ -21,7 +23,11 @@ h2 {
     margin-right: 100px bold red;
 }
 
-.weatherIcon {
+ul {
+    list-style: none;
+}
+
+img {
     size: 20px;
 }
 
