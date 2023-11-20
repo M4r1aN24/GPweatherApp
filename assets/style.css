@@ -8,11 +8,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
-}
-
-header {
-    background-color:white;
+    color: white;
+    background-color: rgb(21, 21, 128);
 }
 
 .row {
