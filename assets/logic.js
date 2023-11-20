@@ -70,7 +70,7 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
 
       var icon = $("<img id = 'weatherIcon'>").attr('src', 'https://openweathermap.org/img/wn/'  + forecastData.weather[0].icon + '@2x.png');
 
-      var liOne = $("<li>").text(dayjs().format()) ;
+      var liOne = $("<li>").text(dayjs(forecastData.dt_txt).format('DD/MM/YYYY')) ;
 
       var forecastTemp = forecastData.main.temp - 272.15;
       var liTwo = $("<li>").text("Temp: " + forecastTemp.toFixed(2) + "°C");
