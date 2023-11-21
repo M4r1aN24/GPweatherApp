@@ -1,5 +1,6 @@
 $('#search-button').on('click', function displayTodaysWeather(event) {
   event.preventDefault();
+
   var city = $(".form-input").val();
   
     var queryURL =
@@ -10,6 +11,7 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
       })
       .then(function (data) {
         var todaysWeather = $("#today");
+        $('#today').empty();
 
       var todayDiv = $("<div class = 'todayBlock'>");
       var todayList = $("<ul class = 'todayListBlock'>");
@@ -51,22 +53,22 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
         })
         .then(function (data) {
           var forecast = $("#forecast");
-          console.log(data);
+          $('#forecast').empty()
           var forecastDisplay = $('<h2>');
             forecastDisplay.text("5-Day Forecast: ");
             forecast.append(forecastDisplay);
 
-          for(var i = 0; i <= data.list.length; i++){
+          for(var i = 0; i <= data.list.length - 1; i++){
             if(data.list[i].dt_txt.slice(11, 13) === "12"){
            var eachDaysWeather = fiveDaysBlock(data.list[i]);
             forecast.append(eachDaysWeather);
             }
           }
         });
-        
     });
  
     function fiveDaysBlock(forecastData){
+      
 
       var forecastList = $("<ul class = 'listBlock'>");
 

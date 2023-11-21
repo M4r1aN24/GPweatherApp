@@ -24,7 +24,7 @@ h2 {
 }
 
 div {
-    display: flex;
+    display: block;
 
 }
 
@@ -32,16 +32,40 @@ aside {
     display: block;
 }
 
+#search-input {
+    width: 90%;
+    height: 100%;
+}
+
+#search-button {
+    width: 100%;
+    background-color: rgb(38, 38, 199);
+    margin-top: 10px;
+    color: white;
+}
+
 ul {
     list-style: none;
 }
 
 .todayBlock {
-    width: 80%;
-  
+    width: 100%;
+    border: 2px solid black;
+    margin-top: 10px;
+    padding: 10px;
 }
+
 .listBlock {
     background-color: rgb(18, 18, 143);
     margin:2px;
     color:antiquewhite;
+}
+
+#today {
+    margin-left: 10px;
+}
+
+#forecast{
+    margin-left: 10px;
+    margin-top: 10px;
 }
