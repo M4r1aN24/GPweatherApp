@@ -1,3 +1,5 @@
+// var city = $(".form-input").val();
+
 $('#search-button').on('click', function displayTodaysWeather(event) {
   event.preventDefault();
 
@@ -36,10 +38,9 @@ $('#search-button').on('click', function displayTodaysWeather(event) {
       todayList.append(liTwo);
       todayList.append(liThree);
       todayList.append(liFour);
-       
+      
       });
   });
-
 
   $('#search-button').on('click', function displayForecast (event) {
     event.preventDefault();
